@@ -1,5 +1,5 @@
 import { Lock, ExternalLink, FileText } from 'lucide-react';
-import { Image } from '@/components/ui/image';
+import BookCover3D from './BookCover3D';
 
 export default function BookCard({ book, index, onOpenDossier }) {
   return (
@@ -36,18 +36,14 @@ export default function BookCard({ book, index, onOpenDossier }) {
           style={{ border: 'none', background: 'none', cursor: 'pointer', textAlign: 'left' }}
           aria-label={`Open dossier for ${book.title}`}
         >
-          <div className="book-cover w-full aspect-[2/3] relative overflow-hidden shadow-lg">
-            <Image
-              src={book.coverUrl}
-              alt={`${book.title} by ${book.author}`}
-              className="w-full h-full"
-              fittingType="fill"
-              focalPointY={0.3}
-            />
+          <div className="book-cover w-full aspect-[2/3] relative">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <BookCover3D book={book} className="w-[78%]" />
+            </div>
             {/* Hover overlay */}
             <div
-              className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/cover:opacity-100 transition-opacity duration-300"
-              style={{ backgroundColor: 'rgba(10,13,16,0.75)' }}
+              className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/cover:opacity-100 transition-opacity duration-300 pointer-events-none"
+              style={{ backgroundColor: 'rgba(10,13,16,0.55)' }}
             >
               <div className="text-center">
                 <FileText size={24} className="mx-auto mb-2" style={{ color: '#E35205' }} />

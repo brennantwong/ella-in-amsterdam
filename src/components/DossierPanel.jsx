@@ -1,5 +1,6 @@
 import { X, BookOpen, Globe, Lock, ExternalLink } from 'lucide-react';
 import { Image } from '@/components/ui/image';
+import BookCover3D from './BookCover3D';
 
 export default function DossierPanel({ book, onClose }) {
   return (
@@ -22,14 +23,7 @@ export default function DossierPanel({ book, onClose }) {
           }}
         />
         <div className="relative z-10 flex flex-col items-center gap-6">
-          <div className="w-52 shadow-2xl" style={{ transform: 'perspective(800px) rotateY(-6deg)' }}>
-            <Image
-              src={book.coverUrl}
-              alt={`${book.title} cover`}
-              className="w-full"
-              fittingType="fit"
-            />
-          </div>
+          <BookCover3D book={book} className="w-52" />
           <div className="text-center">
             <p className="font-mono text-xs tracking-[0.3em] uppercase mb-1" style={{ color: '#6B7280' }}>
               {book.series}
@@ -107,9 +101,7 @@ export default function DossierPanel({ book, onClose }) {
         <div className="px-6 md:px-10 py-8 space-y-8 max-w-2xl">
           {/* Mobile cover */}
           <div className="lg:hidden flex items-center gap-4">
-            <div className="w-20 flex-shrink-0">
-              <Image src={book.coverUrl} alt={book.title} className="w-full" fittingType="fit" />
-            </div>
+            <BookCover3D book={book} className="w-20 flex-shrink-0" />
             <div>
               <p className="font-mono text-xs tracking-widest uppercase mb-1" style={{ color: '#6B7280' }}>{book.series}</p>
               <h2 className="text-xl font-black" style={{ fontFamily: 'Playfair Display, serif', color: '#F4F4F2' }}>{book.title}</h2>
