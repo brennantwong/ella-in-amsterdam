@@ -1,0 +1,217 @@
+import { X, BookOpen, Globe, Lock, ExternalLink } from 'lucide-react';
+import { Image } from '@/components/ui/image';
+
+export default function DossierPanel({ book, onClose }) {
+  return (
+    <div
+      className="dossier-panel fixed inset-0 z-50 flex"
+      style={{ backgroundColor: 'rgba(10,13,16,0.97)' }}
+    >
+      {/* Left — Book cover */}
+      <div
+        className="hidden lg:flex w-2/5 flex-col items-center justify-center p-12 relative"
+        style={{ borderRight: '0.5px solid #6B7280' }}
+      >
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: `url(${book.bgUrl})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            filter: 'grayscale(100%)',
+          }}
+        />
+        <div className="relative z-10 flex flex-col items-center gap-6">
+          <div className="w-52 shadow-2xl" style={{ transform: 'perspective(800px) rotateY(-6deg)' }}>
+            <Image
+              src={book.coverUrl}
+              alt={`${book.title} cover`}
+              className="w-full"
+              fittingType="fit"
+            />
+          </div>
+          <div className="text-center">
+            <p className="font-mono text-xs tracking-[0.3em] uppercase mb-1" style={{ color: '#6B7280' }}>
+              {book.series}
+            </p>
+            <h2
+              className="text-3xl font-black tracking-tight"
+              style={{ fontFamily: 'Playfair Display, serif', color: '#F4F4F2' }}
+            >
+              {book.title}
+            </h2>
+            <p className="text-sm mt-1 italic" style={{ color: '#E35205' }}>{book.quote}</p>
+          </div>
+
+          {/* Buy block */}
+          <div className="w-full mt-4 p-4" style={{ border: '0.5px solid #6B7280' }}>
+            <div className="flex items-center justify-between mb-3">
+              <span className="font-mono text-xs tracking-[0.2em] uppercase" style={{ color: '#6B7280' }}>
+                Status
+              </span>
+              {book.released ? (
+                <span className="font-mono text-xs tracking-widest" style={{ color: '#E35205' }}>
+                  ● Available
+                </span>
+              ) : (
+                <span className="font-mono text-xs tracking-widest flex items-center gap-1" style={{ color: '#6B7280' }}>
+                  <Lock size={10} /> Locked: {book.releaseDate}
+                </span>
+              )}
+            </div>
+            {book.released ? (
+              <a
+                href={book.squareUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full text-center font-mono text-xs tracking-[0.2em] uppercase py-4 transition-all hover:opacity-80"
+                style={{ backgroundColor: '#E35205', color: '#F4F4F2', textDecoration: 'none' }}
+              >
+                Secure Your Copy <ExternalLink size={10} className="inline ml-1" />
+              </a>
+            ) : (
+              <div
+                className="w-full text-center font-mono text-xs tracking-[0.2em] uppercase py-4"
+                style={{ backgroundColor: 'rgba(107,114,128,0.2)', color: '#6B7280', cursor: 'not-allowed' }}
+              >
+                Pre-Order — {book.releaseDate}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Right — Dossier content */}
+      <div className="flex-1 overflow-y-auto" style={{ scrollbarWidth: 'thin', scrollbarColor: '#6B7280 transparent' }}>
+        {/* Header */}
+        <div
+          className="sticky top-0 flex items-center justify-between px-6 md:px-10 py-4 z-10"
+          style={{ backgroundColor: 'rgba(10,13,16,0.97)', borderBottom: '0.5px solid #6B7280' }}
+        >
+          <div className="flex items-center gap-3">
+            <span className="font-mono text-xs tracking-[0.3em] uppercase" style={{ color: '#6B7280' }}>
+              Classified Dossier
+            </span>
+            <span className="font-mono text-xs" style={{ color: '#E35205' }}>— {book.title}</span>
+          </div>
+          <button
+            onClick={onClose}
+            className="p-2 transition-opacity hover:opacity-60"
+            style={{ color: '#F4F4F2' }}
+            aria-label="Close dossier"
+          >
+            <X size={16} />
+          </button>
+        </div>
+
+        <div className="px-6 md:px-10 py-8 space-y-8 max-w-2xl">
+          {/* Mobile cover */}
+          <div className="lg:hidden flex items-center gap-4">
+            <div className="w-20 flex-shrink-0">
+              <Image src={book.coverUrl} alt={book.title} className="w-full" fittingType="fit" />
+            </div>
+            <div>
+              <p className="font-mono text-xs tracking-widest uppercase mb-1" style={{ color: '#6B7280' }}>{book.series}</p>
+              <h2 className="text-xl font-black" style={{ fontFamily: 'Playfair Display, serif', color: '#F4F4F2' }}>{book.title}</h2>
+              <p className="text-xs italic mt-1" style={{ color: '#E35205' }}>{book.quote}</p>
+            </div>
+          </div>
+
+          {/* Tagline */}
+          <div style={{ borderLeft: '2px solid #E35205', paddingLeft: '16px' }}>
+            <p className="text-base font-mono tracking-wide uppercase" style={{ color: '#F4F4F2' }}>{book.tagline}</p>
+          </div>
+
+          {/* Genre + release */}
+          <div className="grid grid-cols-2 gap-4">
+            <div style={{ borderTop: '0.5px solid #6B7280', paddingTop: '12px' }}>
+              <p className="font-mono text-xs tracking-widest uppercase mb-1" style={{ color: '#6B7280' }}>Genre</p>
+              <p className="text-sm" style={{ color: '#F4F4F2' }}>{book.genre}</p>
+            </div>
+            <div style={{ borderTop: '0.5px solid #6B7280', paddingTop: '12px' }}>
+              <p className="font-mono text-xs tracking-widest uppercase mb-1" style={{ color: '#6B7280' }}>Release</p>
+              <p className="text-sm" style={{ color: '#F4F4F2' }}>{book.releaseDate}</p>
+            </div>
+          </div>
+
+          {/* Story */}
+          <div>
+            <div className="flex items-center gap-2 mb-3" style={{ borderTop: '0.5px solid #6B7280', paddingTop: '20px' }}>
+              <BookOpen size={14} style={{ color: '#E35205' }} />
+              <h3 className="font-mono text-xs tracking-[0.25em] uppercase" style={{ color: '#E35205' }}>The Story</h3>
+            </div>
+            <p className="text-sm leading-relaxed" style={{ color: 'rgba(244,244,242,0.8)' }}>{book.story}</p>
+          </div>
+
+          {/* World */}
+          <div>
+            <div className="flex items-center gap-2 mb-3" style={{ borderTop: '0.5px solid #6B7280', paddingTop: '20px' }}>
+              <Globe size={14} style={{ color: '#E35205' }} />
+              <h3 className="font-mono text-xs tracking-[0.25em] uppercase" style={{ color: '#E35205' }}>The World</h3>
+            </div>
+            <p className="text-sm leading-relaxed" style={{ color: 'rgba(244,244,242,0.8)' }}>{book.world}</p>
+          </div>
+
+          {/* Chapters (if available) */}
+          {book.chapters && book.chapters.length > 0 && (
+            <div>
+              <div style={{ borderTop: '0.5px solid #6B7280', paddingTop: '20px' }}>
+                <h3 className="font-mono text-xs tracking-[0.25em] uppercase mb-4" style={{ color: '#E35205' }}>
+                  Chapter Index
+                </h3>
+                <div className="space-y-3">
+                  {book.chapters.map(ch => (
+                    <div
+                      key={ch.num}
+                      className="flex gap-4 pb-3"
+                      style={{ borderBottom: '0.5px solid rgba(107,114,128,0.3)' }}
+                    >
+                      <span className="font-mono text-xs w-6 flex-shrink-0 mt-0.5" style={{ color: '#E35205' }}>
+                        {String(ch.num).padStart(2, '0')}
+                      </span>
+                      <div>
+                        <p className="text-sm font-semibold" style={{ color: '#F4F4F2' }}>{ch.title}</p>
+                        <p className="text-xs mt-0.5" style={{ color: '#6B7280' }}>{ch.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Mobile buy block */}
+          <div className="lg:hidden p-4 mt-4" style={{ border: '0.5px solid #6B7280' }}>
+            <div className="flex items-center justify-between mb-3">
+              <span className="font-mono text-xs tracking-widest uppercase" style={{ color: '#6B7280' }}>Status</span>
+              {book.released ? (
+                <span className="font-mono text-xs" style={{ color: '#E35205' }}>● Available</span>
+              ) : (
+                <span className="font-mono text-xs flex items-center gap-1" style={{ color: '#6B7280' }}>
+                  <Lock size={10} /> {book.releaseDate}
+                </span>
+              )}
+            </div>
+            {book.released ? (
+              <a
+                href={book.squareUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full text-center font-mono text-xs tracking-[0.2em] uppercase py-4"
+                style={{ backgroundColor: '#E35205', color: '#F4F4F2', textDecoration: 'none' }}
+              >
+                Secure Your Copy
+              </a>
+            ) : (
+              <div className="w-full text-center font-mono text-xs tracking-widest uppercase py-4" style={{ backgroundColor: 'rgba(107,114,128,0.2)', color: '#6B7280' }}>
+                Pre-Order — {book.releaseDate}
+              </div>
+            )}
+          </div>
+
+          <div className="pb-16" />
+        </div>
+      </div>
+    </div>
+  );
+}
