@@ -38,19 +38,12 @@ export default function BookCard({ book, index, onOpenDossier }) {
         >
           <div className="book-cover w-full aspect-[2/3] relative">
             <div className="absolute inset-0 flex items-center justify-center">
-              <BookCover3D book={book} className="w-[78%]" />
+              <BookCover3D book={book} className="w-[80%]" />
             </div>
-            {/* Hover overlay */}
-            <div
-              className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/cover:opacity-100 transition-opacity duration-300 pointer-events-none"
-              style={{ backgroundColor: 'rgba(10,13,16,0.55)' }}
-            >
-              <div className="text-center">
-                <FileText size={24} className="mx-auto mb-2" style={{ color: '#E35205' }} />
-                <span className="font-mono text-xs tracking-[0.2em] uppercase" style={{ color: '#F4F4F2' }}>
-                  Open Dossier
-                </span>
-              </div>
+            <div className="absolute bottom-2 left-0 right-0 text-center pointer-events-none opacity-0 group-hover/cover:opacity-100 transition-opacity duration-300">
+              <span className="font-mono text-[10px] tracking-[0.2em] uppercase" style={{ color: '#6B7280' }}>
+                Click to open dossier
+              </span>
             </div>
           </div>
         </button>

@@ -116,6 +116,27 @@ body::before {
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Opening book — cover swings open on hover */
+.book-opens .book-flap {
+  transform: rotateY(0deg);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: left center;
+}
+.book-opens:hover .book-flap {
+  transform: rotateY(-158deg);
+}
+.book-opens .flap-front,
+.book-opens .flap-back,
+.book-opens .book-pages {
+  transition: opacity 0.5s ease;
+}
+.book-opens .book-pages {
+  opacity: 0;
+}
+.book-opens:hover .book-pages {
+  opacity: 1;
+}
+
 /* Redaction scan effect */
 .redact-hover {
   position: relative;
