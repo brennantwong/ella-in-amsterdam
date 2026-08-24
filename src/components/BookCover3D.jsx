@@ -1,6 +1,6 @@
 import { Image } from '@/components/ui/image';
 
-const DEPTH = 32; // total book thickness in px
+const DEPTH = 30; // total book thickness in px
 
 // Dense horizontal "leaf" striations for the page-block edges
 const PAGE_LINES = `
@@ -15,16 +15,16 @@ const PAGE_LINES = `
 
 // Page leaves that riffle open in sequence on hover (flipbook)
 const LEAVES = [
-  { z: DEPTH - 6, delay: 0.12 },
-  { z: DEPTH - 13, delay: 0.22 },
-  { z: DEPTH - 20, delay: 0.32 },
-  { z: DEPTH - 27, delay: 0.42 },
+  { z: DEPTH - 7, delay: 0.12 },
+  { z: DEPTH - 14, delay: 0.22 },
+  { z: DEPTH - 21, delay: 0.32 },
 ];
 
 /**
  * A thick trade paperback. On hover the front cover swings open, then the
  * interior page leaves riffle open in sequence (flipbook), revealing the
- * title page beneath.
+ * title page beneath. The left face is the dark spine binding; the right
+ * face is the cream page block (visible thickness).
  */
 export default function BookCover3D({ book, className = '' }) {
   return (
@@ -37,14 +37,13 @@ export default function BookCover3D({ book, className = '' }) {
         className="absolute inset-0"
         style={{
           transformStyle: 'preserve-3d',
-          transform: 'rotateY(-24deg) rotateX(3deg)',
+          transform: 'rotateY(-22deg) rotateX(2deg)',
         }}
       >
         {/* Title page (back of stack, revealed last) */}
         <div
           className="book-pages absolute inset-0"
           style={{
-            transformStyle: 'preserve-3d',
             backgroundColor: '#F5F2E8',
             borderRadius: '1px 2px 2px 1px',
             boxShadow: 'inset 6px 0 14px rgba(0,0,0,0.18)',
@@ -99,6 +98,7 @@ export default function BookCover3D({ book, className = '' }) {
               backgroundColor: '#0A0D10',
               borderRadius: '1px',
               boxShadow: '0 22px 48px -14px rgba(10,13,16,0.7)',
+              backfaceVisibility: 'hidden',
             }}
           >
             <Image
@@ -111,7 +111,6 @@ export default function BookCover3D({ book, className = '' }) {
             <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(105deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 30%, rgba(255,255,255,0) 70%, rgba(0,0,0,0.26) 100%)' }} />
             {/* Spine shadow on left */}
             <div className="absolute top-0 bottom-0 left-0 pointer-events-none" style={{ width: '16px', background: 'linear-gradient(to right, rgba(0,0,0,0.55), rgba(0,0,0,0))' }} />
-            {/* Thin dark line separating cover from page block */}
             <div className="absolute top-0 bottom-0 right-0 pointer-events-none" style={{ width: '2px', background: 'rgba(10,13,16,0.85)' }} />
           </div>
           {/* Inside of cover (cream) */}
@@ -121,6 +120,7 @@ export default function BookCover3D({ book, className = '' }) {
               transform: 'rotateY(180deg)',
               backgroundColor: '#ECE6D6',
               borderRadius: '1px',
+              backfaceVisibility: 'hidden',
             }}
           >
             <div className="absolute inset-0 p-[14%] flex flex-col justify-end">
@@ -130,32 +130,39 @@ export default function BookCover3D({ book, className = '' }) {
           </div>
         </div>
 
-        {/* Right-edge page block (visible thickness) */}
+        {/* Right-edge page block (visible thickness) — right face */}
         <div
           className="absolute top-0 bottom-0"
           style={{
             right: 0,
             width: `${DEPTH}px`,
             transform: 'rotateY(90deg)',
-            transformOrigin: 'left center',
+            transformOrigin: 'right center',
             background: PAGE_LINES,
             boxShadow: 'inset -5px 0 10px rgba(0,0,0,0.32)',
+          }}
+        />
+        {/* Spine — left face (the binding) */}
+        <div
+          className="absolute top-0 bottom-0"
+          style={{
+            left: 0,
+            width: `${DEPTH}px`,
+            transform: 'rotateY(-90deg)',
+            transformOrigin: 'left center',
+            background: 'linear-gradient(to bottom, #0A0D10 0%, #1c1f23 45%, #11151a 55%, #0A0D10 100%)',
+            boxShadow: 'inset 4px 0 8px rgba(0,0,0,0.5)',
           }}
         />
         {/* Top edge */}
         <div
           className="absolute left-0 right-0"
-          style={{ top: 0, height: `${DEPTH}px`, transform: 'rotateX(90deg)', transformOrigin: 'center bottom', background: 'linear-gradient(to right, #D6CCB5 0%, #F5F2E8 50%, #D6CCB5 100%)' }}
+          style={{ top: 0, height: `${DEPTH}px`, transform: 'rotateX(90deg)', transformOrigin: 'center top', background: 'linear-gradient(to right, #D6CCB5 0%, #F5F2E8 50%, #D6CCB5 100%)' }}
         />
         {/* Bottom edge */}
         <div
           className="absolute left-0 right-0"
-          style={{ bottom: 0, height: `${DEPTH}px`, transform: 'rotateX(-90deg)', transformOrigin: 'center top', background: 'linear-gradient(to right, #C9BD9F 0%, #E2D9C4 50%, #C9BD9F 100%)' }}
-        />
-        {/* Spine */}
-        <div
-          className="absolute top-0 bottom-0"
-          style={{ left: 0, width: `${DEPTH}px`, transform: 'rotateY(-90deg)', transformOrigin: 'right center', background: 'linear-gradient(to bottom, #0A0D10, #1c1f23, #0A0D10)' }}
+          style={{ bottom: 0, height: `${DEPTH}px`, transform: 'rotateX(-90deg)', transformOrigin: 'center bottom', background: 'linear-gradient(to right, #C9BD9F 0%, #E2D9C4 50%, #C9BD9F 100%)' }}
         />
       </div>
 
