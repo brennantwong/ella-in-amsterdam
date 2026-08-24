@@ -16,7 +16,7 @@ export default function NavBar() {
         className="fixed top-[3px] left-0 right-0 z-40 flex items-center justify-between px-6 md:px-12 h-14"
         style={{ backgroundColor: 'rgba(244,244,242,0.95)', backdropFilter: 'blur(8px)', borderBottom: '0.5px solid #0A0D10' }}
       >
-        <a href="#hero" className="flex items-center gap-2" style={{ textDecoration: 'none' }}>
+        <a href="#featured" className="flex items-center gap-2" style={{ textDecoration: 'none' }}>
           <span className="text-xs font-mono tracking-[0.25em] uppercase" style={{ color: '#6B7280' }}>Ella in Amsterdam</span>
         </a>
         <div className="hidden md:flex items-center gap-8">
