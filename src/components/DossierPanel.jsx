@@ -1,6 +1,7 @@
 import { X, BookOpen, Globe, Lock, ExternalLink } from 'lucide-react';
 import { Image } from '@/components/ui/image';
 import BookCover3D from './BookCover3D';
+import BookPreview from './BookPreview';
 
 export default function DossierPanel({ book, onClose }) {
   return (
@@ -112,6 +113,17 @@ export default function DossierPanel({ book, onClose }) {
           {/* Tagline */}
           <div style={{ borderLeft: '2px solid #E35205', paddingLeft: '16px' }}>
             <p className="text-base font-mono tracking-wide uppercase" style={{ color: '#F4F4F2' }}>{book.tagline}</p>
+          </div>
+
+          {/* Preview flipbook — drag a page corner to flip */}
+          <div>
+            <div className="flex items-center gap-2 mb-3" style={{ borderTop: '0.5px solid #6B7280', paddingTop: '20px' }}>
+              <h3 className="font-mono text-xs tracking-[0.25em] uppercase" style={{ color: '#E35205' }}>Preview</h3>
+            </div>
+            <p className="text-xs mb-5" style={{ color: '#6B7280' }}>
+              Drag a page corner to flip — or tap the right side to turn forward, left to go back.
+            </p>
+            <BookPreview book={book} />
           </div>
 
           {/* Genre + release */}
