@@ -97,6 +97,7 @@ export default function InteractiveBook({
     window.removeEventListener('pointermove', onPointerMove);
     window.removeEventListener('pointerup', onPointerUp);
     if (raf.current) cancelAnimationFrame(raf.current);
+    e.target.releasePointerCapture?.(e.pointerId);
 
     const dx = e.clientX - ds.startX;
     const moved = Math.abs(dx);
@@ -123,6 +124,7 @@ export default function InteractiveBook({
     if (leaf < 0 || leaf >= numLeaves) return;
     e.preventDefault();
     drag.current = { leaf, dir: fwd ? 'fwd' : 'back', startX: e.clientX, pageWidth };
+    e.target.setPointerCapture?.(e.pointerId);
     setDragging({ leaf });
     const el = leafRefs.current[leaf];
     if (el) {
