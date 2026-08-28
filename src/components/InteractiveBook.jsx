@@ -51,6 +51,9 @@ export default function InteractiveBook({
     if (!el) return;
     el.style.transform = `rotateY(${angle}deg)`;
     el.querySelectorAll('[data-shade]').forEach((ov) => { ov.style.opacity = String(shade); });
+    const curlPos = 50 + (angle / 180) * 50;
+    const curlBg = `linear-gradient(90deg, transparent ${curlPos - 15}%, rgba(255,255,255,0.25) ${curlPos}%, transparent ${curlPos + 15}%)`;
+    el.querySelectorAll('[data-curl]').forEach((ov) => { ov.style.background = curlBg; });
   };
 
   const onPointerMove = useCallback((e) => {
@@ -209,6 +212,7 @@ export default function InteractiveBook({
               >
                 {front}
                 <div data-shade className="ibook-shade" style={{ position: 'absolute', inset: 0, background: shadeBg, pointerEvents: 'none' }} />
+                <div data-curl style={{ position: 'absolute', inset: 0, background: 'transparent', pointerEvents: 'none' }} />
               </div>
               {/* Back face */}
               <div
@@ -217,6 +221,7 @@ export default function InteractiveBook({
               >
                 {back}
                 <div data-shade className="ibook-shade" style={{ position: 'absolute', inset: 0, background: shadeBg, pointerEvents: 'none' }} />
+                <div data-curl style={{ position: 'absolute', inset: 0, background: 'transparent', pointerEvents: 'none' }} />
               </div>
             </div>
           );
