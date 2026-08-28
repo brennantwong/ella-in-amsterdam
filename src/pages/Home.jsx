@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ScrollProgress from '@/components/ScrollProgress';
+import CursorEffect from '@/components/CursorEffect';
 import NavBar from '@/components/NavBar';
 import FeaturedBook from '@/components/FeaturedBook';
 import VaultSection from '@/components/VaultSection';
@@ -15,6 +16,7 @@ export default function Home() {
   return (
     <div style={{ backgroundColor: '#F4F4F2' }}>
       <ScrollProgress />
+      <CursorEffect />
       <NavBar />
       <main className="pt-[3px]">
         <FeaturedBook onOpenDossier={setActiveDossier} />

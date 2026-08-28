@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { ExternalLink, FileText } from 'lucide-react';
 import BookCover3D from './BookCover3D';
 import { books } from '@/data/books';
@@ -24,7 +25,16 @@ export default function FeaturedBook({ onOpenDossier }) {
           {/* Cover */}
           <div className="flex justify-center md:justify-start order-2 md:order-1">
             <div className="w-[55%] md:w-[68%]">
-              <BookCover3D book={book} className="w-full" />
+              <div style={{ perspective: '1500px' }}>
+                <motion.div
+                  initial={{ opacity: 0, y: 70, rotateY: -32, rotateX: 8, scale: 0.9 }}
+                  animate={{ opacity: 1, y: 0, rotateY: 0, rotateX: 0, scale: 1 }}
+                  transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+                  style={{ transformStyle: 'preserve-3d' }}
+                >
+                  <BookCover3D book={book} className="w-full" />
+                </motion.div>
+              </div>
             </div>
           </div>
 
