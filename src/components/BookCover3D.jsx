@@ -13,11 +13,14 @@ const PAGE_LINES = `
   linear-gradient(to right, #ECE6D6 0%, #F5F2E8 35%, #E2D9C4 70%, #D6CCB5 100%)
 `;
 
-// Page leaves that riffle open in sequence on hover (flipbook)
+// Page leaves that riffle open in sequence on hover (flipbook).
+// Front leaves turn wider; back leaves fan less — like thumbing through pages.
 const LEAVES = [
-  { z: DEPTH - 7, delay: 0.12 },
-  { z: DEPTH - 14, delay: 0.22 },
-  { z: DEPTH - 21, delay: 0.32 },
+  { z: DEPTH - 5, ry: -162, delay: 0.14 },
+  { z: DEPTH - 11, ry: -150, delay: 0.22 },
+  { z: DEPTH - 17, ry: -138, delay: 0.30 },
+  { z: DEPTH - 23, ry: -126, delay: 0.38 },
+  { z: DEPTH - 27, ry: -114, delay: 0.46 },
 ];
 
 /**
@@ -34,11 +37,8 @@ export default function BookCover3D({ book, className = '' }) {
     >
       {/* Book body — front-right viewing angle */}
       <div
-        className="absolute inset-0"
-        style={{
-          transformStyle: 'preserve-3d',
-          transform: 'rotateY(-22deg) rotateX(2deg)',
-        }}
+        className="book-body absolute inset-0"
+        style={{ transformStyle: 'preserve-3d' }}
       >
         {/* Title page (back of stack, revealed last) */}
         <div
@@ -68,6 +68,7 @@ export default function BookCover3D({ book, className = '' }) {
             className="leaf absolute inset-0"
             style={{
               '--z': `${leaf.z}px`,
+              '--ry': `${leaf.ry}deg`,
               '--delay': `${leaf.delay}s`,
               backgroundColor: i % 2 === 0 ? '#F5F2E8' : '#EFE8D6',
               borderRadius: '1px',

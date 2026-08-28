@@ -117,28 +117,35 @@ body::before {
 }
 
 /* Opening book — cover + pages riffle open on hover (flipbook) */
+.book-opens .book-body {
+  transform: rotateY(-22deg) rotateX(2deg);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.book-opens:hover .book-body {
+  transform: rotateY(-29deg) rotateX(2deg) translateZ(18px);
+}
 .book-opens .book-flap,
 .book-opens .leaf {
   transform-origin: left center;
-  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .book-opens .book-flap {
   transform: translateZ(var(--z, 30px)) rotateY(0deg);
   transition-delay: 0s;
 }
 .book-opens:hover .book-flap {
-  transform: translateZ(var(--z, 30px)) rotateY(-164deg);
+  transform: translateZ(var(--z, 30px)) rotateY(-168deg);
 }
 .book-opens .leaf {
   transform: translateZ(var(--z, 0px)) rotateY(0deg);
   transition-delay: var(--delay, 0s);
 }
 .book-opens:hover .leaf {
-  transform: translateZ(var(--z, 0px)) rotateY(-170deg);
+  transform: translateZ(var(--z, 0px)) rotateY(var(--ry, -160deg));
 }
 .book-opens .book-pages {
   opacity: 0;
-  transition: opacity 0.4s ease 0.3s;
+  transition: opacity 0.5s ease 0.38s;
 }
 .book-opens:hover .book-pages {
   opacity: 1;
