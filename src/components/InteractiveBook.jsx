@@ -76,6 +76,7 @@ export default function InteractiveBook({
       return;
     }
     el.style.transition = `transform ${FLIP_MS}ms ${EASE}`;
+    el.style.willChange = 'transform';
     el.style.transform = `rotateY(${targetAngle}deg)`;
     el.querySelectorAll('[data-shade]').forEach((ov) => {
       ov.style.setProperty('--peak-shade', String(SHADE_MAX));
@@ -85,6 +86,7 @@ export default function InteractiveBook({
       if (ev.propertyName !== 'transform') return;
       el.removeEventListener('transitionend', done);
       el.style.transition = '';
+      el.style.willChange = '';
       el.style.transform = '';
       el.querySelectorAll('[data-shade]').forEach((ov) => { ov.style.animation = ''; ov.style.opacity = ''; });
       if (commit) setCurrent((c) => c + (commit === 'fwd' ? 1 : -1));
@@ -132,6 +134,7 @@ export default function InteractiveBook({
     const el = leafRefs.current[leaf];
     if (el) {
       el.style.transition = 'none';
+      el.style.willChange = 'transform';
       el.style.transform = `rotateY(${fwd ? 0 : -180}deg)`;
     }
     window.addEventListener('pointermove', onPointerMove);
