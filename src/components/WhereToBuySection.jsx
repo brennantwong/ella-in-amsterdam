@@ -1,4 +1,4 @@
-import { ExternalLink, Mail, BookOpen } from 'lucide-react';
+import { ExternalLink, Mail } from 'lucide-react';
 
 const channels = [
   {
@@ -8,13 +8,6 @@ const channels = [
     external: true,
     icon: ExternalLink,
     primary: true,
-  },
-  {
-    label: 'Author Website',
-    sub: 'ellainamsterdam.com',
-    href: 'https://www.ellainamsterdam.com',
-    external: true,
-    icon: BookOpen,
   },
   {
     label: 'Dispatches',
@@ -39,7 +32,7 @@ export default function WhereToBuySection() {
           Secure Your Copy
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {channels.map((c) => {
             const Icon = c.icon;
             return (
