@@ -32,7 +32,6 @@ export default function AboutSection() {
                 { label: 'Genre', value: 'International Tech Thriller' },
                 { label: 'Setting', value: 'Amsterdam · New York · Global' },
                 { label: 'Books in Series', value: '3 (2026)' },
-                { label: 'Website', value: 'ellainamsterdam.com' },
               ].map((item, i) => (
                 <div
                   key={i}
