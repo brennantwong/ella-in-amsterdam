@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { X, Menu } from 'lucide-react';
 
 const navItems = [
   { label: 'The Vault', href: '#vault' },
   { label: 'About', href: '#about' },
   { label: 'Newsletter', href: '#newsletter' },
+  { label: 'Contact', to: '/contact' },
 ];
 
 export default function NavBar() {
@@ -20,16 +22,15 @@ export default function NavBar() {
           <span className="text-xs font-mono tracking-[0.25em] uppercase" style={{ color: '#6B7280' }}>Ella in Amsterdam</span>
         </a>
         <div className="hidden md:flex items-center gap-8">
-          {navItems.map(item => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="text-xs font-mono tracking-[0.2em] uppercase transition-colors hover:opacity-60"
-              style={{ color: '#11151A', textDecoration: 'none' }}
-            >
-              {item.label}
-            </a>
-          ))}
+          {navItems.map(item => {
+            const cls = "text-xs font-mono tracking-[0.2em] uppercase transition-colors hover:opacity-60";
+            const sty = { color: '#11151A', textDecoration: 'none' };
+            return item.to ? (
+              <Link key={item.label} to={item.to} className={cls} style={sty}>{item.label}</Link>
+            ) : (
+              <a key={item.label} href={item.href} className={cls} style={sty}>{item.label}</a>
+            );
+          })}
           <a
             href="https://square.link/u/QSrx1eEG"
             target="_blank"
@@ -63,23 +64,25 @@ export default function NavBar() {
             </button>
           </div>
           <div className="flex flex-col justify-center flex-1 px-12 gap-8">
-            {navItems.map((item, i) => (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="flex items-baseline gap-4 group"
-                style={{ textDecoration: 'none' }}
-              >
-                <span className="font-mono text-xs" style={{ color: '#6B7280' }}>0{i + 1}</span>
-                <span
-                  className="text-4xl font-bold tracking-tight group-hover:opacity-70 transition-opacity"
-                  style={{ fontFamily: 'Playfair Display, serif', color: '#E9ECEF' }}
-                >
-                  {item.label}
-                </span>
-              </a>
-            ))}
+            {navItems.map((item, i) => {
+              const cls = "flex items-baseline gap-4 group";
+              const inner = (
+                <>
+                  <span className="font-mono text-xs" style={{ color: '#6B7280' }}>0{i + 1}</span>
+                  <span
+                    className="text-4xl font-bold tracking-tight group-hover:opacity-70 transition-opacity"
+                    style={{ fontFamily: 'Playfair Display, serif', color: '#E9ECEF' }}
+                  >
+                    {item.label}
+                  </span>
+                </>
+              );
+              return item.to ? (
+                <Link key={item.label} to={item.to} onClick={() => setOpen(false)} className={cls} style={{ textDecoration: 'none' }}>{inner}</Link>
+              ) : (
+                <a key={item.label} href={item.href} onClick={() => setOpen(false)} className={cls} style={{ textDecoration: 'none' }}>{inner}</a>
+              );
+            })}
             <a
               href="https://square.link/u/QSrx1eEG"
               target="_blank"
