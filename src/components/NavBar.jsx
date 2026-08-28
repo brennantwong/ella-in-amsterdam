@@ -4,7 +4,7 @@ import { X, Menu } from 'lucide-react';
 const navItems = [
   { label: 'The Vault', href: '#vault' },
   { label: 'About', href: '#about' },
-  { label: 'Dispatches', href: '#newsletter' },
+  { label: 'Newsletter', href: '#newsletter' },
 ];
 
 export default function NavBar() {
