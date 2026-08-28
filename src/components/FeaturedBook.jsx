@@ -11,7 +11,7 @@ export default function FeaturedBook({ onOpenDossier }) {
   const book = books.find((b) => b.released) || books[0];
 
   return (
-    <section id="featured" className="relative overflow-hidden" style={{ backgroundColor: '#F4F4F2' }}>
+    <section id="featured" className="relative overflow-hidden" style={{ backgroundColor: '#E9ECEF' }}>
       {/* Faint atmospheric backdrop */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.06]" style={{
         backgroundImage: `url(${book.bgUrl})`,
@@ -41,8 +41,8 @@ export default function FeaturedBook({ onOpenDossier }) {
           {/* Text */}
           <div className="order-1 md:order-2">
             <div className="flex items-center gap-3 mb-5">
-              <span className="pulse-dot w-2 h-2 rounded-full" style={{ backgroundColor: '#E35205' }} />
-              <span className="font-mono text-xs tracking-[0.35em] uppercase" style={{ color: '#E35205' }}>
+              <span className="pulse-dot w-2 h-2 rounded-full" style={{ backgroundColor: '#1E5CFF' }} />
+              <span className="font-mono text-xs tracking-[0.35em] uppercase" style={{ color: '#1E5CFF' }}>
                 Out Now
               </span>
             </div>
@@ -52,7 +52,7 @@ export default function FeaturedBook({ onOpenDossier }) {
             </p>
             <h1
               className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.95] mb-4"
-              style={{ fontFamily: 'Playfair Display, serif', color: '#0A0D10' }}
+              style={{ fontFamily: 'Playfair Display, serif', color: '#11151A' }}
             >
               {book.title}
             </h1>
@@ -60,7 +60,7 @@ export default function FeaturedBook({ onOpenDossier }) {
               {book.genre}
             </p>
 
-            <p className="text-base md:text-lg leading-relaxed mb-8 max-w-xl" style={{ color: '#0A0D10' }}>
+            <p className="text-base md:text-lg leading-relaxed mb-8 max-w-xl" style={{ color: '#11151A' }}>
               {book.story}
             </p>
 
@@ -70,14 +70,14 @@ export default function FeaturedBook({ onOpenDossier }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 font-mono text-xs tracking-[0.2em] uppercase px-8 py-4 transition-all hover:opacity-85"
-                style={{ backgroundColor: '#E35205', color: '#F4F4F2', textDecoration: 'none' }}
+                style={{ backgroundColor: '#1E5CFF', color: '#E9ECEF', textDecoration: 'none' }}
               >
                 Buy Today <ExternalLink size={12} />
               </a>
               <button
                 onClick={() => onOpenDossier(book)}
-                className="inline-flex items-center justify-center gap-2 font-mono text-xs tracking-[0.2em] uppercase px-8 py-4 transition-all hover:bg-[#0A0D10] hover:text-[#F4F4F2]"
-                style={{ border: '1px solid #0A0D10', color: '#0A0D10', background: 'none', cursor: 'pointer' }}
+                className="inline-flex items-center justify-center gap-2 font-mono text-xs tracking-[0.2em] uppercase px-8 py-4 transition-all hover:bg-[#11151A] hover:text-[#E9ECEF]"
+                style={{ border: '1px solid #11151A', color: '#11151A', background: 'none', cursor: 'pointer' }}
               >
                 More Info <FileText size={12} />
               </button>

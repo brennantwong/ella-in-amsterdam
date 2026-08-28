@@ -14,7 +14,7 @@ export default function Home() {
   const [activeDossier, setActiveDossier] = useState(null);
 
   return (
-    <div style={{ backgroundColor: '#F4F4F2' }}>
+    <div style={{ backgroundColor: '#E9ECEF' }}>
       <ScrollProgress />
       <CursorEffect />
       <NavBar />

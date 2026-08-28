@@ -226,7 +226,7 @@ export default function InteractiveBook({
         aria-hidden
         style={{
           position: 'absolute', left: '4%', right: '4%', bottom: '-12px', height: '18px',
-          background: 'radial-gradient(ellipse at center, rgba(10,13,16,0.35) 0%, rgba(10,13,16,0) 70%)',
+          background: 'radial-gradient(ellipse at center, rgba(17,21,26,0.35) 0%, rgba(17,21,26,0) 70%)',
           filter: 'blur(7px)', zIndex: -1,
         }}
       />

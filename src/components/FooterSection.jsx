@@ -1,7 +1,7 @@
 export default function FooterSection() {
   return (
     <footer
-      style={{ backgroundColor: '#0A0D10', borderTop: '0.5px solid rgba(244,244,242,0.1)' }}
+      style={{ backgroundColor: '#11151A', borderTop: '0.5px solid rgba(233,236,239,0.1)' }}
     >
       <div className="px-6 md:px-12 py-12">
         <div className="max-w-6xl mx-auto">
@@ -11,7 +11,7 @@ export default function FooterSection() {
               <p className="font-mono text-xs tracking-[0.35em] uppercase mb-3" style={{ color: '#6B7280' }}>Series</p>
               <h3
                 className="text-xl font-black mb-2"
-                style={{ fontFamily: 'Playfair Display, serif', color: '#F4F4F2' }}
+                style={{ fontFamily: 'Playfair Display, serif', color: '#E9ECEF' }}
               >
                 Ella in Amsterdam
               </h3>
@@ -30,7 +30,7 @@ export default function FooterSection() {
                   { title: 'Heavy Carry', date: 'Nov 2026' },
                 ].map(b => (
                   <div key={b.title} className="flex items-center justify-between">
-                    <span className="text-sm" style={{ color: 'rgba(244,244,242,0.8)' }}>{b.title}</span>
+                    <span className="text-sm" style={{ color: 'rgba(233,236,239,0.8)' }}>{b.title}</span>
                     <span className="font-mono text-xs" style={{ color: '#6B7280' }}>{b.date}</span>
                   </div>
                 ))}
@@ -45,7 +45,7 @@ export default function FooterSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block font-mono text-xs tracking-[0.2em] uppercase px-5 py-3 transition-all hover:opacity-80 mb-3"
-                style={{ backgroundColor: '#E35205', color: '#F4F4F2', textDecoration: 'none' }}
+                style={{ backgroundColor: '#1E5CFF', color: '#E9ECEF', textDecoration: 'none' }}
               >
                 Buy on Square
               </a>

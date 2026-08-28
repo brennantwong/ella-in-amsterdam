@@ -51,12 +51,12 @@ export default function BookCover3D({ book, className = '' }) {
         >
           <div className="absolute inset-0 p-[12%] flex flex-col gap-[6%]">
             {Array.from({ length: 5 }).map((_, i) => (
-              <div key={i} style={{ height: '2px', width: `${[100, 88, 96, 74, 90][i]}%`, backgroundColor: 'rgba(10,13,16,0.16)' }} />
+              <div key={i} style={{ height: '2px', width: `${[100, 88, 96, 74, 90][i]}%`, backgroundColor: 'rgba(17,21,26,0.16)' }} />
             ))}
             <div className="mt-[10%]">
-              <p className="font-mono text-[7px] tracking-[0.2em] uppercase" style={{ color: 'rgba(10,13,16,0.35)' }}>{book.series}</p>
-              <p className="font-black text-[12px] leading-tight mt-[5%]" style={{ fontFamily: 'Playfair Display, serif', color: 'rgba(10,13,16,0.55)' }}>{book.title}</p>
-              <p className="font-mono text-[6px] tracking-[0.15em] uppercase mt-[6%]" style={{ color: 'rgba(10,13,16,0.3)' }}>{book.author}</p>
+              <p className="font-mono text-[7px] tracking-[0.2em] uppercase" style={{ color: 'rgba(17,21,26,0.35)' }}>{book.series}</p>
+              <p className="font-black text-[12px] leading-tight mt-[5%]" style={{ fontFamily: 'Playfair Display, serif', color: 'rgba(17,21,26,0.55)' }}>{book.title}</p>
+              <p className="font-mono text-[6px] tracking-[0.15em] uppercase mt-[6%]" style={{ color: 'rgba(17,21,26,0.3)' }}>{book.author}</p>
             </div>
           </div>
         </div>
@@ -78,10 +78,10 @@ export default function BookCover3D({ book, className = '' }) {
           >
             <div className="absolute inset-0 p-[12%] flex flex-col gap-[8%]">
               {Array.from({ length: 4 }).map((_, j) => (
-                <div key={j} style={{ height: '2px', width: `${[100, 92, 80, 96][j]}%`, backgroundColor: 'rgba(10,13,16,0.12)' }} />
+                <div key={j} style={{ height: '2px', width: `${[100, 92, 80, 96][j]}%`, backgroundColor: 'rgba(17,21,26,0.12)' }} />
               ))}
             </div>
-            <span className="absolute bottom-[8%] right-[10%] font-mono text-[7px]" style={{ color: 'rgba(10,13,16,0.25)' }}>
+            <span className="absolute bottom-[8%] right-[10%] font-mono text-[7px]" style={{ color: 'rgba(17,21,26,0.25)' }}>
               {i + 1}
             </span>
           </div>
@@ -96,9 +96,9 @@ export default function BookCover3D({ book, className = '' }) {
           <div
             className="absolute inset-0 overflow-hidden"
             style={{
-              backgroundColor: '#0A0D10',
+              backgroundColor: '#11151A',
               borderRadius: '1px',
-              boxShadow: '0 22px 48px -14px rgba(10,13,16,0.7)',
+              boxShadow: '0 22px 48px -14px rgba(17,21,26,0.7)',
               backfaceVisibility: 'hidden',
             }}
           >
@@ -112,7 +112,7 @@ export default function BookCover3D({ book, className = '' }) {
             <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(105deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 30%, rgba(255,255,255,0) 70%, rgba(0,0,0,0.26) 100%)' }} />
             {/* Spine shadow on left */}
             <div className="absolute top-0 bottom-0 left-0 pointer-events-none" style={{ width: '16px', background: 'linear-gradient(to right, rgba(0,0,0,0.55), rgba(0,0,0,0))' }} />
-            <div className="absolute top-0 bottom-0 right-0 pointer-events-none" style={{ width: '2px', background: 'rgba(10,13,16,0.85)' }} />
+            <div className="absolute top-0 bottom-0 right-0 pointer-events-none" style={{ width: '2px', background: 'rgba(17,21,26,0.85)' }} />
           </div>
           {/* Inside of cover (cream) */}
           <div
@@ -125,8 +125,8 @@ export default function BookCover3D({ book, className = '' }) {
             }}
           >
             <div className="absolute inset-0 p-[14%] flex flex-col justify-end">
-              <p className="font-mono text-[7px] tracking-[0.2em] uppercase" style={{ color: 'rgba(10,13,16,0.4)' }}>{book.author}</p>
-              <p className="font-black text-[12px] leading-tight mt-1" style={{ fontFamily: 'Playfair Display, serif', color: 'rgba(10,13,16,0.5)' }}>{book.title}</p>
+              <p className="font-mono text-[7px] tracking-[0.2em] uppercase" style={{ color: 'rgba(17,21,26,0.4)' }}>{book.author}</p>
+              <p className="font-black text-[12px] leading-tight mt-1" style={{ fontFamily: 'Playfair Display, serif', color: 'rgba(17,21,26,0.5)' }}>{book.title}</p>
             </div>
           </div>
         </div>
@@ -151,7 +151,7 @@ export default function BookCover3D({ book, className = '' }) {
             width: `${DEPTH}px`,
             transform: 'rotateY(-90deg)',
             transformOrigin: 'left center',
-            background: 'linear-gradient(to bottom, #0A0D10 0%, #1c1f23 45%, #11151a 55%, #0A0D10 100%)',
+            background: 'linear-gradient(to bottom, #11151A 0%, #1c1f23 45%, #11151a 55%, #11151A 100%)',
             boxShadow: 'inset 4px 0 8px rgba(0,0,0,0.5)',
           }}
         />
@@ -172,7 +172,7 @@ export default function BookCover3D({ book, className = '' }) {
         className="absolute"
         style={{
           left: '6%', right: '2%', bottom: '-14px', height: '26px',
-          background: 'radial-gradient(ellipse at center, rgba(10,13,16,0.45) 0%, rgba(10,13,16,0) 70%)',
+          background: 'radial-gradient(ellipse at center, rgba(17,21,26,0.45) 0%, rgba(17,21,26,0) 70%)',
           transform: 'scaleY(0.5) translateX(10px)',
           filter: 'blur(9px)',
           zIndex: -1,

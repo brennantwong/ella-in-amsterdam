@@ -19,10 +19,10 @@ export default function ScrollProgress() {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 flex items-center h-[3px]" style={{ backgroundColor: '#0A0D10' }}>
+    <div className="fixed top-0 left-0 right-0 z-50 flex items-center h-[3px]" style={{ backgroundColor: '#11151A' }}>
       <div
         className="h-full transition-all duration-100"
-        style={{ width: `${progress}%`, backgroundColor: '#E35205' }}
+        style={{ width: `${progress}%`, backgroundColor: '#1E5CFF' }}
       />
       <div
         className="absolute right-4 top-[6px] text-[10px] font-mono tracking-widest"

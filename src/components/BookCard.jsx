@@ -5,7 +5,7 @@ export default function BookCard({ book, index, onOpenDossier }) {
   return (
     <div
       className="book-card group relative flex flex-col"
-      style={{ borderTop: '0.5px solid #0A0D10' }}
+      style={{ borderTop: '0.5px solid #11151A' }}
     >
       {/* Background image on hover */}
       <div
@@ -55,24 +55,24 @@ export default function BookCard({ book, index, onOpenDossier }) {
           </p>
           <h3
             className="text-2xl md:text-3xl font-black tracking-tight mb-2 leading-tight"
-            style={{ fontFamily: 'Playfair Display, serif', color: '#0A0D10' }}
+            style={{ fontFamily: 'Playfair Display, serif', color: '#11151A' }}
           >
             {book.title}
           </h3>
           <p className="text-sm italic mb-4" style={{ color: '#6B7280' }}>{book.tagline}</p>
 
           {/* Quote */}
-          <div style={{ borderLeft: '2px solid #E35205', paddingLeft: '12px', marginBottom: '20px' }}>
-            <p className="text-xs italic" style={{ color: '#0A0D10' }}>"{book.quote}"</p>
+          <div style={{ borderLeft: '2px solid #1E5CFF', paddingLeft: '12px', marginBottom: '20px' }}>
+            <p className="text-xs italic" style={{ color: '#11151A' }}>"{book.quote}"</p>
           </div>
         </div>
 
         {/* Transaction block */}
-        <div style={{ borderTop: '0.5px solid #0A0D10', paddingTop: '16px' }}>
+        <div style={{ borderTop: '0.5px solid #11151A', paddingTop: '16px' }}>
           <div className="flex items-center justify-between mb-3">
             <span className="font-mono text-xs tracking-widest uppercase" style={{ color: '#6B7280' }}>Transaction</span>
             {book.released ? (
-              <span className="font-mono text-xs flex items-center gap-1" style={{ color: '#E35205' }}>
+              <span className="font-mono text-xs flex items-center gap-1" style={{ color: '#1E5CFF' }}>
                 <span className="w-1.5 h-1.5 rounded-full bg-current" />
                 Available
               </span>
@@ -88,7 +88,7 @@ export default function BookCard({ book, index, onOpenDossier }) {
             <button
               onClick={() => onOpenDossier(book)}
               className="w-full font-mono text-xs tracking-[0.2em] uppercase py-3 transition-all hover:opacity-70"
-              style={{ border: '0.5px solid #0A0D10', color: '#0A0D10', background: 'none', cursor: 'pointer' }}
+              style={{ border: '0.5px solid #11151A', color: '#11151A', background: 'none', cursor: 'pointer' }}
             >
               View Dossier
             </button>
@@ -98,7 +98,7 @@ export default function BookCard({ book, index, onOpenDossier }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full text-center font-mono text-xs tracking-[0.2em] uppercase py-3 transition-all hover:opacity-80 flex items-center justify-center gap-2"
-                style={{ backgroundColor: '#E35205', color: '#F4F4F2', textDecoration: 'none' }}
+                style={{ backgroundColor: '#1E5CFF', color: '#E9ECEF', textDecoration: 'none' }}
               >
                 Secure Your Copy <ExternalLink size={10} />
               </a>

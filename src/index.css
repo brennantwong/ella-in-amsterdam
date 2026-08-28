@@ -45,9 +45,9 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
 
     /* Custom design tokens */
-    --bone: #F4F4F2;
-    --ink: #0A0D10;
-    --orange: #E35205;
+    --bone: #E9ECEF;
+    --ink: #11151A;
+    --orange: #1E5CFF;
     --steel: #6B7280;
   }
 }
@@ -58,8 +58,8 @@
   }
 
   body {
-    background-color: #F4F4F2;
-    color: #0A0D10;
+    background-color: #E9ECEF;
+    color: #11151A;
     font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
     font-size: 18px;
     line-height: 1.6;
@@ -92,7 +92,7 @@ body::before {
   top: 0;
   left: 0;
   height: 2px;
-  background-color: #E35205;
+  background-color: #1E5CFF;
   z-index: 1000;
   transition: width 0.1s linear;
 }
@@ -161,7 +161,7 @@ body::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent 0%, rgba(227, 82, 5, 0.08) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(30, 92, 255, 0.08) 50%, transparent 100%);
   transform: translateX(-100%);
   transition: transform 0.6s ease;
 }
@@ -182,7 +182,7 @@ body::before {
 
 /* Technical rule lines */
 .rule-line {
-  border-top: 0.5px solid #0A0D10;
+  border-top: 0.5px solid #11151A;
 }
 
 .rule-line-steel {
