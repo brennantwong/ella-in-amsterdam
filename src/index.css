@@ -205,3 +205,9 @@ body::before {
 .ibook-leaf[data-flipped="true"] { transform: rotateY(-180deg); }
 .ibook-leaf[data-flipped="false"] { transform: rotateY(0deg); }
 .ibook-shade { opacity: 0; }
+
+@keyframes pageShadowArc {
+  0% { opacity: 0; }
+  50% { opacity: var(--peak-shade, 0.55); }
+  100% { opacity: 0; }
+}

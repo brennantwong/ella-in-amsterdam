@@ -75,15 +75,15 @@ export default function InteractiveBook({
     el.style.transition = `transform ${FLIP_MS}ms ${EASE}`;
     el.style.transform = `rotateY(${targetAngle}deg)`;
     el.querySelectorAll('[data-shade]').forEach((ov) => {
-      ov.style.transition = `opacity ${FLIP_MS}ms ${EASE}`;
-      ov.style.opacity = '0';
+      ov.style.setProperty('--peak-shade', String(SHADE_MAX));
+      ov.style.animation = `pageShadowArc ${FLIP_MS}ms ${EASE}`;
     });
     const done = (ev) => {
       if (ev.propertyName !== 'transform') return;
       el.removeEventListener('transitionend', done);
       el.style.transition = '';
       el.style.transform = '';
-      el.querySelectorAll('[data-shade]').forEach((ov) => { ov.style.transition = ''; ov.style.opacity = ''; });
+      el.querySelectorAll('[data-shade]').forEach((ov) => { ov.style.animation = ''; ov.style.opacity = ''; });
       if (commit) setCurrent((c) => c + (commit === 'fwd' ? 1 : -1));
       setDragging(null);
     };
