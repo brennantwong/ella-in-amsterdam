@@ -43,7 +43,7 @@ export default function FeaturedBook({ onOpenDossier }) {
             <div className="flex items-center gap-3 mb-5">
               <span className="pulse-dot w-2 h-2 rounded-full" style={{ backgroundColor: '#1E5CFF' }} />
               <span className="font-mono text-xs tracking-[0.35em] uppercase" style={{ color: '#1E5CFF' }}>
-                Out Now
+                Buy Now
               </span>
             </div>
 

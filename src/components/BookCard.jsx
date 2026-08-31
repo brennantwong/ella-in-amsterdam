@@ -103,12 +103,15 @@ export default function BookCard({ book, index, onOpenDossier }) {
                 Secure Your Copy <ExternalLink size={10} />
               </a>
             ) : (
-              <div
-                className="w-full text-center font-mono text-xs tracking-widest uppercase py-3"
-                style={{ backgroundColor: 'rgba(107,114,128,0.1)', color: '#6B7280', border: '0.5px solid #6B7280' }}
+              <a
+                href={book.squareUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full text-center font-mono text-xs tracking-[0.2em] uppercase py-3 transition-all hover:opacity-80 flex items-center justify-center gap-2"
+                style={{ backgroundColor: '#1E5CFF', color: '#E9ECEF', textDecoration: 'none' }}
               >
-                Locked — {book.releaseDate}
-              </div>
+                Pre Order <ExternalLink size={10} />
+              </a>
             )}
           </div>
         </div>

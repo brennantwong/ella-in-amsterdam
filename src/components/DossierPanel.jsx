@@ -65,12 +65,15 @@ export default function DossierPanel({ book, onClose }) {
                 Secure Your Copy <ExternalLink size={10} className="inline ml-1" />
               </a>
             ) : (
-              <div
-                className="w-full text-center font-mono text-xs tracking-[0.2em] uppercase py-4"
-                style={{ backgroundColor: 'rgba(107,114,128,0.2)', color: '#6B7280', cursor: 'not-allowed' }}
+              <a
+                href={book.squareUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full text-center font-mono text-xs tracking-[0.2em] uppercase py-4 transition-all hover:opacity-80"
+                style={{ backgroundColor: '#1E5CFF', color: '#E9ECEF', textDecoration: 'none' }}
               >
-                Pre-Order — {book.releaseDate}
-              </div>
+                Pre Order <ExternalLink size={10} className="inline ml-1" />
+              </a>
             )}
           </div>
         </div>
@@ -207,9 +210,15 @@ export default function DossierPanel({ book, onClose }) {
                 Secure Your Copy
               </a>
             ) : (
-              <div className="w-full text-center font-mono text-xs tracking-widest uppercase py-4" style={{ backgroundColor: 'rgba(107,114,128,0.2)', color: '#6B7280' }}>
-                Pre-Order — {book.releaseDate}
-              </div>
+              <a
+                href={book.squareUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full text-center font-mono text-xs tracking-widest uppercase py-4"
+                style={{ backgroundColor: '#1E5CFF', color: '#E9ECEF', textDecoration: 'none' }}
+              >
+                Pre Order
+              </a>
             )}
           </div>
 
