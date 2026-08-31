@@ -3,7 +3,7 @@ import NavBar from '@/components/NavBar';
 import FooterSection from '@/components/FooterSection';
 import ScrollProgress from '@/components/ScrollProgress';
 
-const CONTACT_EMAIL = 'contact@ellainamsterdam.com';
+const CONTACT_EMAIL = 'e.cachette@gmail.com';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
