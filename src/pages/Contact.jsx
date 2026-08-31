@@ -2,23 +2,30 @@ import { useState } from 'react';
 import NavBar from '@/components/NavBar';
 import FooterSection from '@/components/FooterSection';
 import ScrollProgress from '@/components/ScrollProgress';
+import { base44 } from '@/api/base44Client';
 
 const CONTACT_EMAIL = 'e.cachette@gmail.com';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState('');
 
   const update = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    const subject = encodeURIComponent(form.subject || `Message from ${form.name || 'a reader'}`);
-    const body = encodeURIComponent(
-      `${form.message}\n\n— ${form.name}${form.email ? `\n${form.email}` : ''}`
-    );
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-    setSent(true);
+    setSending(true);
+    setError('');
+    try {
+      await base44.functions.invoke('sendContactInquiry', form);
+      setSent(true);
+    } catch (err) {
+      setError('Something went wrong sending your message. Please try again or email us directly.');
+    } finally {
+      setSending(false);
+    }
   };
 
   const inputClass =
@@ -88,10 +95,10 @@ export default function Contact() {
                       className="text-2xl font-black mb-3"
                       style={{ fontFamily: 'Playfair Display, serif', color: '#11151A' }}
                     >
-                      Your mail client should now be open.
+                      Message transmitted.
                     </h2>
                     <p className="text-sm leading-relaxed mb-6" style={{ color: 'rgba(17,21,26,0.75)' }}>
-                      If nothing happened, email us directly at{' '}
+                      Your inquiry has been sent to the desk behind the series. Need to reach us sooner? Email{' '}
                       <a href={`mailto:${CONTACT_EMAIL}`} style={{ color: '#1E5CFF' }}>
                         {CONTACT_EMAIL}
                       </a>
@@ -152,12 +159,16 @@ export default function Contact() {
                         placeholder="Your transmission…"
                       />
                     </div>
+                    {error && (
+                      <p className="text-xs" style={{ color: '#dc2626' }}>{error}</p>
+                    )}
                     <button
                       type="submit"
-                      className="font-mono text-xs tracking-[0.2em] uppercase px-6 py-3 transition-all hover:opacity-80"
+                      disabled={sending}
+                      className="font-mono text-xs tracking-[0.2em] uppercase px-6 py-3 transition-all hover:opacity-80 disabled:opacity-50"
                       style={{ backgroundColor: '#1E5CFF', color: '#E9ECEF' }}
                     >
-                      Transmit
+                      {sending ? 'Transmitting…' : 'Transmit'}
                     </button>
                   </form>
                 )}
