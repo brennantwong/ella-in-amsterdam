@@ -92,6 +92,11 @@ export default function BookCard({ book, index, onOpenDossier }) {
             >
               View Dossier
             </button>
+            {!book.released && (
+              <p className="font-mono text-[10px] tracking-[0.15em] uppercase mb-2" style={{ color: '#6B7280' }}>
+                Pre-order available
+              </p>
+            )}
             <div className="grid grid-cols-2 gap-2">
               <a
                 href={book.squareUrl}
@@ -100,7 +105,7 @@ export default function BookCard({ book, index, onOpenDossier }) {
                 className="w-full text-center font-mono text-xs tracking-[0.15em] uppercase py-3 transition-all hover:opacity-80 flex items-center justify-center gap-1.5"
                 style={{ backgroundColor: '#1E5CFF', color: '#E9ECEF', textDecoration: 'none' }}
               >
-                {book.released ? 'Square' : 'Pre Order'} <ExternalLink size={10} />
+                Square <ExternalLink size={10} />
               </a>
               <a
                 href={book.kindleUrl}
