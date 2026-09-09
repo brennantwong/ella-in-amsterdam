@@ -1,3 +1,5 @@
+import { books } from '@/data/books';
+
 export default function FooterSection() {
   return (
     <footer
@@ -23,15 +25,18 @@ export default function FooterSection() {
             {/* Books */}
             <div>
               <p className="font-mono text-xs tracking-[0.35em] uppercase mb-3" style={{ color: '#6B7280' }}>The Files</p>
-              <div className="space-y-2">
-                {[
-                  { title: 'Outside Money', date: 'Jan 2026' },
-                  { title: 'Capital Call', date: 'Oct 2026' },
-                  { title: 'Heavy Carry', date: 'Nov 2026' },
-                ].map(b => (
-                  <div key={b.title} className="flex items-center justify-between">
-                    <span className="text-sm" style={{ color: 'rgba(233,236,239,0.8)' }}>{b.title}</span>
-                    <span className="font-mono text-xs" style={{ color: '#6B7280' }}>{b.date}</span>
+              <div className="space-y-4">
+                {books.map(b => (
+                  <div key={b.id}>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm" style={{ color: 'rgba(233,236,239,0.8)' }}>{b.title}</span>
+                      <span className="font-mono text-xs" style={{ color: '#6B7280' }}>{b.releaseDate}</span>
+                    </div>
+                    <div className="flex items-center gap-2 mt-1.5">
+                      <a href={b.squareUrl} target="_blank" rel="noopener noreferrer" className="font-mono text-xs tracking-[0.15em] uppercase hover:opacity-70 transition-opacity" style={{ color: '#1E5CFF', textDecoration: 'none' }}>Square</a>
+                      <span style={{ color: '#6B7280' }}>/</span>
+                      <a href={b.kindleUrl} target="_blank" rel="noopener noreferrer" className="font-mono text-xs tracking-[0.15em] uppercase hover:opacity-70 transition-opacity" style={{ color: '#1E5CFF', textDecoration: 'none' }}>Kindle</a>
+                    </div>
                   </div>
                 ))}
               </div>
