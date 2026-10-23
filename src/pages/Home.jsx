@@ -5,7 +5,6 @@ import NavBar from '@/components/NavBar';
 import FeaturedBook from '@/components/FeaturedBook';
 import VaultSection from '@/components/VaultSection';
 import AboutSection from '@/components/AboutSection';
-import WhereToBuySection from '@/components/WhereToBuySection';
 import NewsletterSection from '@/components/NewsletterSection';
 import FooterSection from '@/components/FooterSection';
 import DossierPanel from '@/components/DossierPanel';
@@ -22,7 +21,6 @@ export default function Home() {
         <FeaturedBook onOpenDossier={setActiveDossier} />
         <VaultSection onOpenDossier={setActiveDossier} />
         <AboutSection />
-        <WhereToBuySection />
         <NewsletterSection />
         <FooterSection />
       </main>
