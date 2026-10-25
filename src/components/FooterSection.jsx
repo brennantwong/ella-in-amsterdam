@@ -42,30 +42,6 @@ export default function FooterSection() {
               </div>
             </div>
 
-            {/* Acquire */}
-            <div>
-              <p className="font-mono text-xs tracking-[0.35em] uppercase mb-3" style={{ color: '#6B7280' }}>Acquire</p>
-              <a
-                href="https://square.link/u/QSrx1eEG"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block font-mono text-xs tracking-[0.2em] uppercase px-5 py-3 transition-all hover:opacity-80 mb-3"
-                style={{ backgroundColor: '#1E5CFF', color: '#E9ECEF', textDecoration: 'none' }}
-              >
-                Buy on Square
-              </a>
-              <p className="text-xs" style={{ color: '#6B7280' }}>
-                <a
-                  href="https://www.ellainamsterdam.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: '#6B7280', textDecoration: 'none' }}
-                  className="hover:text-white transition-colors"
-                >
-                  ellainamsterdam.com
-                </a>
-              </p>
-            </div>
           </div>
 
           {/* Bottom */}
