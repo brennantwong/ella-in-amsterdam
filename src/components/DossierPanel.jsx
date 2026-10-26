@@ -3,7 +3,10 @@ import { Image } from '@/components/ui/image';
 import BookCover3D from './BookCover3D';
 import BookPreview from './BookPreview';
 
+const ABOUT_SERIES = 'Ella in Amsterdam is an international thriller about a woman learning deep secrets about money and people.';
+
 export default function DossierPanel({ book, onClose }) {
+  const accent = book.accent || accent;
   return (
     <div
       className="dossier-panel fixed inset-0 z-50 flex"
@@ -35,7 +38,7 @@ export default function DossierPanel({ book, onClose }) {
             >
               {book.title}
             </h2>
-            <p className="text-sm mt-1 italic" style={{ color: '#1E5CFF' }}>{book.quote}</p>
+            <p className="text-sm mt-1 italic" style={{ color: accent }}>{book.quote}</p>
           </div>
 
           {/* Buy block */}
@@ -45,7 +48,7 @@ export default function DossierPanel({ book, onClose }) {
                 Status
               </span>
               {book.released ? (
-                <span className="font-mono text-xs tracking-widest" style={{ color: '#1E5CFF' }}>
+                <span className="font-mono text-xs tracking-widest" style={{ color: accent }}>
                   ● Available
                 </span>
               ) : (
@@ -60,7 +63,7 @@ export default function DossierPanel({ book, onClose }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full text-center font-mono text-xs tracking-[0.2em] uppercase py-4 transition-all hover:opacity-80"
-                style={{ backgroundColor: '#1E5CFF', color: '#E9ECEF', textDecoration: 'none' }}
+                style={{ backgroundColor: accent, color: '#E9ECEF', textDecoration: 'none' }}
               >
                 Secure Your Copy <ExternalLink size={10} className="inline ml-1" />
               </a>
@@ -70,7 +73,7 @@ export default function DossierPanel({ book, onClose }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full text-center font-mono text-xs tracking-[0.2em] uppercase py-4 transition-all hover:opacity-80"
-                style={{ backgroundColor: '#1E5CFF', color: '#E9ECEF', textDecoration: 'none' }}
+                style={{ backgroundColor: accent, color: '#E9ECEF', textDecoration: 'none' }}
               >
                 Pre Order <ExternalLink size={10} className="inline ml-1" />
               </a>
@@ -90,7 +93,7 @@ export default function DossierPanel({ book, onClose }) {
             <span className="font-mono text-xs tracking-[0.3em] uppercase" style={{ color: '#6B7280' }}>
               Classified Dossier
             </span>
-            <span className="font-mono text-xs" style={{ color: '#1E5CFF' }}>— {book.title}</span>
+            <span className="font-mono text-xs" style={{ color: accent }}>— {book.title}</span>
           </div>
           <button
             onClick={onClose}
@@ -109,19 +112,19 @@ export default function DossierPanel({ book, onClose }) {
             <div>
               <p className="font-mono text-xs tracking-widest uppercase mb-1" style={{ color: '#6B7280' }}>{book.series}</p>
               <h2 className="text-xl font-black" style={{ fontFamily: 'Playfair Display, serif', color: '#E9ECEF' }}>{book.title}</h2>
-              <p className="text-xs italic mt-1" style={{ color: '#1E5CFF' }}>{book.quote}</p>
+              <p className="text-xs italic mt-1" style={{ color: accent }}>{book.quote}</p>
             </div>
           </div>
 
           {/* Tagline */}
-          <div style={{ borderLeft: '2px solid #1E5CFF', paddingLeft: '16px' }}>
+          <div style={{ borderLeft: `2px solid ${accent}`, paddingLeft: '16px' }}>
             <p className="text-base font-mono tracking-wide uppercase" style={{ color: '#E9ECEF' }}>{book.tagline}</p>
           </div>
 
           {/* Preview flipbook — drag a page corner to flip */}
           <div>
             <div className="flex items-center gap-2 mb-3" style={{ borderTop: '0.5px solid #6B7280', paddingTop: '20px' }}>
-              <h3 className="font-mono text-xs tracking-[0.25em] uppercase" style={{ color: '#1E5CFF' }}>Preview</h3>
+              <h3 className="font-mono text-xs tracking-[0.25em] uppercase" style={{ color: accent }}>Preview</h3>
             </div>
             <p className="text-xs mb-5" style={{ color: '#6B7280' }}>
               Drag a page corner to flip — or tap the right side to turn forward, left to go back.
@@ -144,8 +147,8 @@ export default function DossierPanel({ book, onClose }) {
           {/* Story */}
           <div>
             <div className="flex items-center gap-2 mb-3" style={{ borderTop: '0.5px solid #6B7280', paddingTop: '20px' }}>
-              <BookOpen size={14} style={{ color: '#1E5CFF' }} />
-              <h3 className="font-mono text-xs tracking-[0.25em] uppercase" style={{ color: '#1E5CFF' }}>The Story</h3>
+              <BookOpen size={14} style={{ color: accent }} />
+              <h3 className="font-mono text-xs tracking-[0.25em] uppercase" style={{ color: accent }}>The Story</h3>
             </div>
             <p className="text-sm leading-relaxed" style={{ color: 'rgba(233,236,239,0.8)' }}>{book.story}</p>
           </div>
@@ -153,17 +156,25 @@ export default function DossierPanel({ book, onClose }) {
           {/* World */}
           <div>
             <div className="flex items-center gap-2 mb-3" style={{ borderTop: '0.5px solid #6B7280', paddingTop: '20px' }}>
-              <Globe size={14} style={{ color: '#1E5CFF' }} />
-              <h3 className="font-mono text-xs tracking-[0.25em] uppercase" style={{ color: '#1E5CFF' }}>The World</h3>
+              <Globe size={14} style={{ color: accent }} />
+              <h3 className="font-mono text-xs tracking-[0.25em] uppercase" style={{ color: accent }}>The World</h3>
             </div>
             <p className="text-sm leading-relaxed" style={{ color: 'rgba(233,236,239,0.8)' }}>{book.world}</p>
+          </div>
+
+          {/* About series */}
+          <div>
+            <div className="flex items-center gap-2 mb-3" style={{ borderTop: '0.5px solid #6B7280', paddingTop: '20px' }}>
+              <h3 className="font-mono text-xs tracking-[0.25em] uppercase" style={{ color: accent }}>About the Series</h3>
+            </div>
+            <p className="text-sm leading-relaxed" style={{ color: 'rgba(233,236,239,0.8)' }}>{ABOUT_SERIES}</p>
           </div>
 
           {/* Chapters (if available) */}
           {book.chapters && book.chapters.length > 0 && (
             <div>
               <div style={{ borderTop: '0.5px solid #6B7280', paddingTop: '20px' }}>
-                <h3 className="font-mono text-xs tracking-[0.25em] uppercase mb-4" style={{ color: '#1E5CFF' }}>
+                <h3 className="font-mono text-xs tracking-[0.25em] uppercase mb-4" style={{ color: accent }}>
                   Chapter Index
                 </h3>
                 <div className="space-y-3">
@@ -173,7 +184,7 @@ export default function DossierPanel({ book, onClose }) {
                       className="flex gap-4 pb-3"
                       style={{ borderBottom: '0.5px solid rgba(107,114,128,0.3)' }}
                     >
-                      <span className="font-mono text-xs w-6 flex-shrink-0 mt-0.5" style={{ color: '#1E5CFF' }}>
+                      <span className="font-mono text-xs w-6 flex-shrink-0 mt-0.5" style={{ color: accent }}>
                         {String(ch.num).padStart(2, '0')}
                       </span>
                       <div>
@@ -192,7 +203,7 @@ export default function DossierPanel({ book, onClose }) {
             <div className="flex items-center justify-between mb-3">
               <span className="font-mono text-xs tracking-widest uppercase" style={{ color: '#6B7280' }}>Status</span>
               {book.released ? (
-                <span className="font-mono text-xs" style={{ color: '#1E5CFF' }}>● Available</span>
+                <span className="font-mono text-xs" style={{ color: accent }}>● Available</span>
               ) : (
                 <span className="font-mono text-xs flex items-center gap-1" style={{ color: '#6B7280' }}>
                   <Lock size={10} /> {book.releaseDate}
@@ -205,7 +216,7 @@ export default function DossierPanel({ book, onClose }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full text-center font-mono text-xs tracking-[0.2em] uppercase py-4"
-                style={{ backgroundColor: '#1E5CFF', color: '#E9ECEF', textDecoration: 'none' }}
+                style={{ backgroundColor: accent, color: '#E9ECEF', textDecoration: 'none' }}
               >
                 Secure Your Copy
               </a>
@@ -215,7 +226,7 @@ export default function DossierPanel({ book, onClose }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full text-center font-mono text-xs tracking-widest uppercase py-4"
-                style={{ backgroundColor: '#1E5CFF', color: '#E9ECEF', textDecoration: 'none' }}
+                style={{ backgroundColor: accent, color: '#E9ECEF', textDecoration: 'none' }}
               >
                 Pre Order
               </a>
