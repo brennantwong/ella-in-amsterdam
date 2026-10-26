@@ -1,20 +1,8 @@
-import { useState } from 'react';
 import { Send } from 'lucide-react';
 
-export default function NewsletterSection() {
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState('idle'); // idle | success | error
+const MAILCHIMP_URL = 'https://cachettegroup.us8.list-manage.com/subscribe?u=14bb0aad703a768aa9ca92853&id=be7a2bde96';
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!email || !email.includes('@')) {
-      setStatus('error');
-      return;
-    }
-    // In production, connect to your email service here
-    setStatus('success');
-    setEmail('');
-  };
+export default function NewsletterSection() {
 
   return (
     <section
@@ -42,55 +30,35 @@ export default function NewsletterSection() {
 
           {/* Right — form */}
           <div>
-            {status === 'success' ? (
-              <div
-                className="p-8 text-center"
-                style={{ border: '0.5px solid #1E5CFF' }}
-              >
-                <span className="font-mono text-xs tracking-[0.25em] uppercase block mb-2" style={{ color: '#1E5CFF' }}>
-                  Transmission Confirmed
-                </span>
-                <p className="text-sm" style={{ color: '#6B7280' }}>
-                  You're now enrolled. Watch for the next dispatch.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} noValidate>
-                <div
-                  className="flex"
-                  style={{ border: '0.5px solid #11151A' }}
+            <form action={MAILCHIMP_URL} method="post" target="_blank">
+              <input type="hidden" name="u" value="14bb0aad703a768aa9ca92853" />
+              <input type="hidden" name="id" value="be7a2bde96" />
+              <div className="flex" style={{ border: '0.5px solid #11151A' }}>
+                <input
+                  type="email"
+                  name="EMAIL"
+                  required
+                  placeholder="Your operative address"
+                  className="flex-1 px-4 py-4 text-sm outline-none bg-transparent font-mono placeholder-opacity-40"
+                  style={{
+                    color: '#11151A',
+                    backgroundColor: 'transparent',
+                    fontFamily: 'Inter, sans-serif',
+                    borderRight: '0.5px solid #11151A',
+                  }}
+                />
+                <button
+                  type="submit"
+                  className="px-6 py-4 font-mono text-xs tracking-[0.2em] uppercase transition-all hover:opacity-80 flex items-center gap-2 flex-shrink-0"
+                  style={{ backgroundColor: '#11151A', color: '#E9ECEF' }}
                 >
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => { setEmail(e.target.value); setStatus('idle'); }}
-                    placeholder="Your operative address"
-                    className="flex-1 px-4 py-4 text-sm outline-none bg-transparent font-mono placeholder-opacity-40"
-                    style={{
-                      color: '#11151A',
-                      backgroundColor: 'transparent',
-                      fontFamily: 'Inter, sans-serif',
-                      borderRight: '0.5px solid #11151A',
-                    }}
-                  />
-                  <button
-                    type="submit"
-                    className="px-6 py-4 font-mono text-xs tracking-[0.2em] uppercase transition-all hover:opacity-80 flex items-center gap-2 flex-shrink-0"
-                    style={{ backgroundColor: '#11151A', color: '#E9ECEF' }}
-                  >
-                    Enroll <Send size={12} />
-                  </button>
-                </div>
-                {status === 'error' && (
-                  <p className="font-mono text-xs mt-2" style={{ color: '#1E5CFF' }}>
-                    Enter a valid address to proceed.
-                  </p>
-                )}
-                <p className="font-mono text-xs mt-3" style={{ color: '#6B7280' }}>
-                  Encrypted. No third-party forwarding. Unsubscribe at any time.
-                </p>
-              </form>
-            )}
+                  Enroll <Send size={12} />
+                </button>
+              </div>
+              <p className="font-mono text-xs mt-3" style={{ color: '#6B7280' }}>
+                Unsubscribe at any time.
+              </p>
+            </form>
           </div>
         </div>
       </div>
