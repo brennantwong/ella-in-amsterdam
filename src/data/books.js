@@ -48,7 +48,7 @@ export const books = [
     genre: 'International Tech Thriller',
     coverUrl: 'https://media.base44.com/images/public/6a88cd622b5ecb032bde5c51/8ba09d5b4_capitalcallcover.png',
     bgUrl: 'https://media.base44.com/images/public/6a88cd622b5ecb032bde5c51/8ba09d5b4_capitalcallcover.png',
-    squareUrl: 'https://square.link/u/Qlet8lwj',
+    squareUrl: 'https://square.link/u/QIet8Iwj',
     kindleUrl: 'https://www.amazon.com/dp/B0HHD5ZNTQ',
     story: 'Due to a mistake by her stoner accountant (or vaguely), Ella takes on a risky project for the mafia to build a mobile app because it seems innocent enough and she needs the money. This choice complicates her life, and Chelsea helps her come up with an exit plan.',
     world: 'Follow Ella\'s adventures through East coast underground ways as she learns the painful truth of information.',
