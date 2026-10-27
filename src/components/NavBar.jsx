@@ -31,15 +31,6 @@ export default function NavBar() {
               <a key={item.label} href={item.href} className={cls} style={sty}>{item.label}</a>
             );
           })}
-          <a
-            href="https://square.link/u/QSrx1eEG"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs font-mono tracking-[0.2em] uppercase px-4 py-2 transition-all hover:opacity-80"
-            style={{ backgroundColor: '#1E5CFF', color: '#E9ECEF', textDecoration: 'none' }}
-          >
-            Buy Now
-          </a>
         </div>
         <button
           className="md:hidden"
