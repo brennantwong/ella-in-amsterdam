@@ -2,30 +2,21 @@ import { useState } from 'react';
 import NavBar from '@/components/NavBar';
 import FooterSection from '@/components/FooterSection';
 import ScrollProgress from '@/components/ScrollProgress';
-import { base44 } from '@/api/base44Client';
 
 const CONTACT_EMAIL = 'e.cachette@gmail.com';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [sent, setSent] = useState(false);
-  const [sending, setSending] = useState(false);
-  const [error, setError] = useState('');
 
   const update = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
 
-  const onSubmit = async (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    setSending(true);
-    setError('');
-    try {
-      await base44.functions.invoke('sendContactInquiry', form);
-      setSent(true);
-    } catch (err) {
-      setError('Something went wrong sending your message. Please try again or email us directly.');
-    } finally {
-      setSending(false);
-    }
+    const subject = form.subject ? `Inquiry: ${form.subject}` : `Inquiry from ${form.name}`;
+    const body = `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`;
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setSent(true);
   };
 
   const inputClass =
@@ -98,11 +89,11 @@ export default function Contact() {
                       Message transmitted.
                     </h2>
                     <p className="text-sm leading-relaxed mb-6" style={{ color: 'rgba(17,21,26,0.75)' }}>
-                      Your inquiry has been sent to the desk behind the series. Need to reach us sooner? Email{' '}
+                      Your email app should have opened with your message addressed to{' '}
                       <a href={`mailto:${CONTACT_EMAIL}`} style={{ color: '#1E5CFF' }}>
                         {CONTACT_EMAIL}
                       </a>
-                      .
+                      . Press send there to complete the transmission.
                     </p>
                     <button
                       onClick={() => setSent(false)}
@@ -159,16 +150,12 @@ export default function Contact() {
                         placeholder="Your transmission…"
                       />
                     </div>
-                    {error && (
-                      <p className="text-xs" style={{ color: '#dc2626' }}>{error}</p>
-                    )}
                     <button
                       type="submit"
-                      disabled={sending}
-                      className="font-mono text-xs tracking-[0.2em] uppercase px-6 py-3 transition-all hover:opacity-80 disabled:opacity-50"
+                      className="font-mono text-xs tracking-[0.2em] uppercase px-6 py-3 transition-all hover:opacity-80"
                       style={{ backgroundColor: '#1E5CFF', color: '#E9ECEF' }}
                     >
-                      {sending ? 'Transmitting…' : 'Transmit'}
+                      Transmit
                     </button>
                   </form>
                 )}
