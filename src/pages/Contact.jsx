@@ -4,7 +4,7 @@ import NavBar from '@/components/NavBar';
 import FooterSection from '@/components/FooterSection';
 import ScrollProgress from '@/components/ScrollProgress';
 
-const CONTACT_EMAIL = 'e.cachette@gmail.com';
+const CONTACT_EMAIL = 'bdub.nsu@gmail.com';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
@@ -68,6 +68,21 @@ export default function Contact() {
                 </p>
 
                 <div className="space-y-0">
+                  <div
+                    className="flex items-start justify-between gap-4 py-4"
+                    style={{ borderTop: '0.5px solid rgba(17,21,26,0.2)' }}
+                  >
+                    <span className="font-mono text-xs tracking-[0.2em] uppercase" style={{ color: '#6B7280' }}>
+                      Email
+                    </span>
+                    <a
+                      href={`mailto:${CONTACT_EMAIL}`}
+                      className="text-sm text-right hover:opacity-70 transition-opacity break-all"
+                      style={{ color: '#1E5CFF' }}
+                    >
+                      {CONTACT_EMAIL}
+                    </a>
+                  </div>
                   {[
                     { label: 'Publisher', value: 'Cachette Group LLC' },
                     { label: 'Series', value: 'Ella in Amsterdam' },
