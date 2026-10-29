@@ -32,14 +32,29 @@ export default async function(req) {
       message,
     ].join('\n');
 
-    await base44.asServiceRole.integrations.Core.SendEmail({
-      to: RECIPIENT,
-      subject: emailSubject,
-      body,
-      from_name: `${APP_NAME} Contact`,
+    const record = await base44.asServiceRole.entities.ContactInquiry.create({
+      name,
+      email,
+      subject,
+      message,
+      emailed: false,
     });
 
-    return Response.json({ ok: true });
+    let emailed = false;
+    try {
+      await base44.asServiceRole.integrations.Core.SendEmail({
+        to: RECIPIENT,
+        subject: emailSubject,
+        body,
+        from_name: `${APP_NAME} Contact`,
+      });
+      emailed = true;
+      await base44.asServiceRole.entities.ContactInquiry.update(record.id, { emailed: true });
+    } catch (sendError) {
+      console.log(`Inquiry saved but email not delivered: ${sendError.message}`);
+    }
+
+    return Response.json({ ok: true, emailed });
   } catch (error) {
     return Response.json({ error: error.message }, { status: 500 });
   }
