@@ -44,7 +44,7 @@ export const books = [
     author: 'Désirée Cachette',
     tagline: 'One mistake. One deal. One exit plan.',
     quote: 'Some deals look harmless until the price comes due.',
-    releaseDate: 'November 22, 2026',
+    releaseDate: 'October 23, 2026',
     accent: '#E8761E',
     released: false,
     genre: 'International Tech Thriller',
