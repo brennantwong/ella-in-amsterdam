@@ -1,6 +1,6 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.44';
 
-const RECIPIENT = 'bdub.nsu@gmail.com';
+const RECIPIENT = 'e.cachette@gmail.com';
 const APP_NAME = 'Ella in Amsterdam';
 
 export default async function(req) {
