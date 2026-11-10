@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { books } from '@/data/books';
 
 export default function FooterSection() {
@@ -38,6 +39,27 @@ export default function FooterSection() {
                       <a href={b.kindleUrl} target="_blank" rel="noopener noreferrer" className="font-mono text-xs tracking-[0.15em] uppercase hover:opacity-70 transition-opacity" style={{ color: '#1E5CFF', textDecoration: 'none' }}>Kindle</a>
                     </div>
                   </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Navigate */}
+            <div>
+              <p className="font-mono text-xs tracking-[0.35em] uppercase mb-3" style={{ color: '#6B7280' }}>Navigate</p>
+              <div className="space-y-3">
+                {[
+                  { label: 'About the Series', to: '/about' },
+                  { label: 'Enter the Vault', to: '/' },
+                  { label: 'Contact', to: '/contact' },
+                ].map(item => (
+                  <Link
+                    key={item.label}
+                    to={item.to}
+                    className="block text-sm hover:opacity-70 transition-opacity"
+                    style={{ color: 'rgba(233,236,239,0.8)', textDecoration: 'none' }}
+                  >
+                    {item.label}
+                  </Link>
                 ))}
               </div>
             </div>

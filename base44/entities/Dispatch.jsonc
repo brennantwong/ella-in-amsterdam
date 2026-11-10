@@ -1,0 +1,80 @@
+{
+  "name": "Dispatch",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Headline of the dispatch"
+    },
+    "description": {
+      "type": "string",
+      "description": "Short summary used for listings and search snippets"
+    },
+    "slug": {
+      "type": "string",
+      "description": "URL-friendly identifier"
+    },
+    "body": {
+      "type": "string",
+      "description": "Full text of the dispatch"
+    },
+    "book": {
+      "type": "string",
+      "description": "Related book id from the series catalog"
+    },
+    "publish_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the dispatch goes live"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "published"
+      ],
+      "enumColors": [
+        "gray",
+        "green"
+      ],
+      "default": "draft"
+    }
+  },
+  "required": [
+    "title",
+    "description",
+    "body"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "data.status": "published"
+        },
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
