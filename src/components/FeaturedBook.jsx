@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, FileText } from 'lucide-react';
+import { FileText } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import BookCover3D from './BookCover3D';
 import { books } from '@/data/books';
 
@@ -65,15 +66,13 @@ export default function FeaturedBook({ onOpenDossier }) {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3">
-              <a
-                href={book.squareUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to={`/books/${book.id}`}
                 className="inline-flex items-center justify-center gap-2 font-mono text-xs tracking-[0.2em] uppercase px-8 py-4 transition-all hover:opacity-85"
                 style={{ backgroundColor: '#1E5CFF', color: '#E9ECEF', textDecoration: 'none' }}
               >
-                Buy Today <ExternalLink size={12} />
-              </a>
+                Buy Paperback
+              </Link>
               <button
                 onClick={() => onOpenDossier(book)}
                 className="inline-flex items-center justify-center gap-2 font-mono text-xs tracking-[0.2em] uppercase px-8 py-4 transition-all hover:bg-[#11151A] hover:text-[#E9ECEF]"

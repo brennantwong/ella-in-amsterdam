@@ -33,11 +33,13 @@ export default function FooterSection() {
                       <span className="text-sm" style={{ color: 'rgba(233,236,239,0.8)' }}>{b.title}</span>
                       <span className="font-mono text-xs" style={{ color: '#6B7280' }}>{b.releaseDate}</span>
                     </div>
-                    <div className="flex items-center gap-2 mt-1.5">
-                      <a href={b.squareUrl} target="_blank" rel="noopener noreferrer" className="font-mono text-xs tracking-[0.15em] uppercase hover:opacity-70 transition-opacity" style={{ color: '#1E5CFF', textDecoration: 'none' }}>Square</a>
-                      <span style={{ color: '#6B7280' }}>/</span>
-                      <a href={b.kindleUrl} target="_blank" rel="noopener noreferrer" className="font-mono text-xs tracking-[0.15em] uppercase hover:opacity-70 transition-opacity" style={{ color: '#1E5CFF', textDecoration: 'none' }}>Kindle</a>
-                    </div>
+                    <Link
+                      to={`/books/${b.id}`}
+                      className="inline-block mt-1.5 font-mono text-xs tracking-[0.15em] uppercase hover:opacity-70 transition-opacity"
+                      style={{ color: '#1E5CFF', textDecoration: 'none' }}
+                    >
+                      Shop Paperback
+                    </Link>
                   </div>
                 ))}
               </div>
@@ -50,6 +52,7 @@ export default function FooterSection() {
                 {[
                   { label: 'About the Series', to: '/about' },
                   { label: 'Enter the Vault', to: '/' },
+                  { label: 'Your Cart', to: '/cart' },
                   { label: 'Contact', to: '/contact' },
                 ].map(item => (
                   <Link

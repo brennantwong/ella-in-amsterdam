@@ -1,4 +1,5 @@
-import { Lock, ExternalLink, FileText } from 'lucide-react';
+import { Lock } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import BookCover3D from './BookCover3D';
 
 export default function BookCard({ book, index, onOpenDossier }) {
@@ -97,26 +98,13 @@ export default function BookCard({ book, index, onOpenDossier }) {
                 Pre-order available
               </p>
             )}
-            <div className="grid grid-cols-2 gap-2">
-              <a
-                href={book.squareUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full text-center font-mono text-xs tracking-[0.15em] uppercase py-3 transition-all hover:opacity-80 flex items-center justify-center gap-1.5"
-                style={{ backgroundColor: '#1E5CFF', color: '#E9ECEF', textDecoration: 'none' }}
-              >
-                Square <ExternalLink size={10} />
-              </a>
-              <a
-                href={book.kindleUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full text-center font-mono text-xs tracking-[0.15em] uppercase py-3 transition-all hover:opacity-80 flex items-center justify-center gap-1.5"
-                style={{ backgroundColor: '#1E5CFF', color: '#E9ECEF', textDecoration: 'none' }}
-              >
-                Kindle <ExternalLink size={10} />
-              </a>
-            </div>
+            <Link
+              to={`/books/${book.id}`}
+              className="block w-full text-center font-mono text-xs tracking-[0.15em] uppercase py-3 transition-all hover:opacity-80"
+              style={{ backgroundColor: '#1E5CFF', color: '#E9ECEF', textDecoration: 'none' }}
+            >
+              {book.released ? 'Shop Paperback' : 'Pre-order Paperback'}
+            </Link>
           </div>
         </div>
       </div>

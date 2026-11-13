@@ -1,4 +1,5 @@
-import { X, BookOpen, Globe, Lock, ExternalLink } from 'lucide-react';
+import { X, BookOpen, Globe, Lock } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Image } from '@/components/ui/image';
 import BookCover3D from './BookCover3D';
 import BookPreview from './BookPreview';
@@ -57,27 +58,14 @@ export default function DossierPanel({ book, onClose }) {
                 </span>
               )}
             </div>
-            {book.released ? (
-              <a
-                href={book.squareUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full text-center font-mono text-xs tracking-[0.2em] uppercase py-4 transition-all hover:opacity-80"
-                style={{ backgroundColor: accent, color: '#E9ECEF', textDecoration: 'none' }}
-              >
-                Secure Your Copy <ExternalLink size={10} className="inline ml-1" />
-              </a>
-            ) : (
-              <a
-                href={book.squareUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full text-center font-mono text-xs tracking-[0.2em] uppercase py-4 transition-all hover:opacity-80"
-                style={{ backgroundColor: accent, color: '#E9ECEF', textDecoration: 'none' }}
-              >
-                Pre Order <ExternalLink size={10} className="inline ml-1" />
-              </a>
-            )}
+            <Link
+              to={`/books/${book.id}`}
+              onClick={onClose}
+              className="block w-full text-center font-mono text-xs tracking-[0.2em] uppercase py-4 transition-all hover:opacity-80"
+              style={{ backgroundColor: accent, color: '#E9ECEF', textDecoration: 'none' }}
+            >
+              {book.released ? 'Shop Paperback' : 'Pre-order Paperback'}
+            </Link>
           </div>
         </div>
       </div>
@@ -210,27 +198,14 @@ export default function DossierPanel({ book, onClose }) {
                 </span>
               )}
             </div>
-            {book.released ? (
-              <a
-                href={book.squareUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full text-center font-mono text-xs tracking-[0.2em] uppercase py-4"
-                style={{ backgroundColor: accent, color: '#E9ECEF', textDecoration: 'none' }}
-              >
-                Secure Your Copy
-              </a>
-            ) : (
-              <a
-                href={book.squareUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full text-center font-mono text-xs tracking-widest uppercase py-4"
-                style={{ backgroundColor: accent, color: '#E9ECEF', textDecoration: 'none' }}
-              >
-                Pre Order
-              </a>
-            )}
+            <Link
+              to={`/books/${book.id}`}
+              onClick={onClose}
+              className="block w-full text-center font-mono text-xs tracking-[0.2em] uppercase py-4"
+              style={{ backgroundColor: accent, color: '#E9ECEF', textDecoration: 'none' }}
+            >
+              {book.released ? 'Shop Paperback' : 'Pre-order Paperback'}
+            </Link>
           </div>
 
           <div className="pb-16" />
