@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { X, Menu, ShoppingBag } from 'lucide-react';
-import { useCart } from '@/lib/cart';
+import { X, Menu } from 'lucide-react';
 
 const navItems = [
   { label: 'The Vault', to: '/#vault' },
@@ -12,7 +11,6 @@ const navItems = [
 
 export default function NavBar() {
   const [open, setOpen] = useState(false);
-  const { count } = useCart();
 
   return (
     <>
@@ -35,23 +33,6 @@ export default function NavBar() {
           })}
         </div>
         <div className="flex items-center gap-5">
-          <Link
-            to="/cart"
-            className="flex items-center gap-2 hover:opacity-60 transition-opacity"
-            style={{ color: '#11151A', textDecoration: 'none' }}
-            aria-label={`Cart, ${count} items`}
-          >
-            <ShoppingBag size={17} />
-            <span className="font-mono text-xs tracking-[0.2em] uppercase hidden sm:inline">Cart</span>
-            {count > 0 && (
-              <span
-                className="font-mono text-[10px] w-[18px] h-[18px] flex items-center justify-center rounded-full"
-                style={{ backgroundColor: '#1E5CFF', color: '#E9ECEF' }}
-              >
-                {count}
-              </span>
-            )}
-          </Link>
           <button
             className="md:hidden"
             onClick={() => setOpen(true)}
@@ -95,14 +76,6 @@ export default function NavBar() {
                 <a key={item.label} href={item.href} onClick={() => setOpen(false)} className={cls} style={{ textDecoration: 'none' }}>{inner}</a>
               );
             })}
-            <Link
-              to="/cart"
-              onClick={() => setOpen(false)}
-              className="mt-4 inline-block text-xs font-mono tracking-[0.2em] uppercase px-6 py-3 transition-all hover:opacity-80"
-              style={{ backgroundColor: '#1E5CFF', color: '#E9ECEF', textDecoration: 'none', width: 'fit-content' }}
-            >
-              Cart {count > 0 ? `(${count})` : ''}
-            </Link>
           </div>
         </div>
       )}

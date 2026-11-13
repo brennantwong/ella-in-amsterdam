@@ -1,5 +1,4 @@
-import { X, BookOpen, Globe, Lock } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { X, BookOpen, Globe, Lock, ExternalLink } from 'lucide-react';
 import { Image } from '@/components/ui/image';
 import BookCover3D from './BookCover3D';
 import BookPreview from './BookPreview';
@@ -7,7 +6,7 @@ import BookPreview from './BookPreview';
 const ABOUT_SERIES = 'Ella in Amsterdam is an international thriller about a woman learning deep secrets about money and people.';
 
 export default function DossierPanel({ book, onClose }) {
-  const accent = book.accent || accent;
+  const accent = book.accent || '#1E5CFF';
   return (
     <div
       className="dossier-panel fixed inset-0 z-50 flex"
@@ -58,14 +57,15 @@ export default function DossierPanel({ book, onClose }) {
                 </span>
               )}
             </div>
-            <Link
-              to={`/books/${book.id}`}
-              onClick={onClose}
+            <a
+              href={book.squareUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="block w-full text-center font-mono text-xs tracking-[0.2em] uppercase py-4 transition-all hover:opacity-80"
               style={{ backgroundColor: accent, color: '#E9ECEF', textDecoration: 'none' }}
             >
-              {book.released ? 'Shop Paperback' : 'Pre-order Paperback'}
-            </Link>
+              {book.released ? 'Secure Your Copy' : 'Pre Order'} <ExternalLink size={10} className="inline ml-1" />
+            </a>
           </div>
         </div>
       </div>
@@ -198,14 +198,15 @@ export default function DossierPanel({ book, onClose }) {
                 </span>
               )}
             </div>
-            <Link
-              to={`/books/${book.id}`}
-              onClick={onClose}
+            <a
+              href={book.squareUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="block w-full text-center font-mono text-xs tracking-[0.2em] uppercase py-4"
               style={{ backgroundColor: accent, color: '#E9ECEF', textDecoration: 'none' }}
             >
-              {book.released ? 'Shop Paperback' : 'Pre-order Paperback'}
-            </Link>
+              {book.released ? 'Secure Your Copy' : 'Pre Order'}
+            </a>
           </div>
 
           <div className="pb-16" />

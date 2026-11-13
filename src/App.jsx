@@ -6,15 +6,10 @@ import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ScrollToTop from './components/ScrollToTop';
-import { CartProvider } from '@/lib/cart';
 // Add page imports here
 import Home from './pages/Home';
 import Contact from './pages/Contact';
 import About from './pages/About';
-import BookProduct from './pages/BookProduct';
-import Cart from './pages/Cart';
-import Checkout from './pages/Checkout';
-import OrderConfirmed from './pages/OrderConfirmed';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -46,10 +41,6 @@ const AuthenticatedApp = () => {
       <Route path="/home" element={<Navigate to="/" replace />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
-      <Route path="/books/:bookId" element={<BookProduct />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route path="/checkout" element={<Checkout />} />
-      <Route path="/order-confirmed" element={<OrderConfirmed />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
@@ -63,9 +54,7 @@ function App() {
       <QueryClientProvider client={queryClientInstance}>
         <Router>
           <ScrollToTop />
-          <CartProvider>
-            <AuthenticatedApp />
-          </CartProvider>
+          <AuthenticatedApp />
         </Router>
         <Toaster />
       </QueryClientProvider>

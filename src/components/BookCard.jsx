@@ -1,5 +1,4 @@
-import { Lock } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Lock, ExternalLink } from 'lucide-react';
 import BookCover3D from './BookCover3D';
 
 export default function BookCard({ book, index, onOpenDossier }) {
@@ -98,13 +97,24 @@ export default function BookCard({ book, index, onOpenDossier }) {
                 Pre-order available
               </p>
             )}
-            <Link
-              to={`/books/${book.id}`}
+            <a
+              href={book.squareUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="block w-full text-center font-mono text-xs tracking-[0.15em] uppercase py-3 transition-all hover:opacity-80"
               style={{ backgroundColor: '#1E5CFF', color: '#E9ECEF', textDecoration: 'none' }}
             >
-              {book.released ? 'Shop Paperback' : 'Pre-order Paperback'}
-            </Link>
+              {book.released ? 'Secure Your Copy' : 'Pre-order'} <ExternalLink size={10} className="inline ml-1" />
+            </a>
+            <a
+              href={book.kindleUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full text-center font-mono text-xs tracking-[0.15em] uppercase py-2 transition-all hover:opacity-70"
+              style={{ color: '#6B7280', textDecoration: 'none' }}
+            >
+              Kindle Edition <ExternalLink size={10} className="inline ml-1" />
+            </a>
           </div>
         </div>
       </div>
